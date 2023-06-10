@@ -45,7 +45,7 @@ export const Home = () => {
 
   return (
     <>
-    {/* <PaginatedComponent/> */}
+    <PaginatedComponent/>
       <div className="parentDiv">
         <input
           value={filterr}
@@ -93,7 +93,7 @@ export const Home = () => {
             </tbody>
           </table>
         </div>
-        <div><PaginatedComponent/></div>
+        {/* <div><PaginatedComponent/></div> */}
       </div>
     
     </>

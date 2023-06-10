@@ -3,6 +3,7 @@ const intialState = {
   data: [],
   //   taking for copy so that actuall state should
   sortData: [],
+  totalbutt:0,
   isLoading: false,
   isError: false,
 };
@@ -15,11 +16,16 @@ export const reducer = (state = intialState, action) => {
       };
     }
     case Types.GET_ALL_DATA_SUCESS: {
+        const pageCount=action.payload.data.length;
+        console.log(pageCount,"pc")
+        const tPage=Math.floor(pageCount/10)
       return {
         ...state,
         isLoading: false,
         data: action.payload.data,
         sortData: action.payload.data,
+        totalbutt:tPage
+
       };
     }
     case Types.GET_ALL_DATA_FAILURE: {
@@ -74,12 +80,33 @@ export const reducer = (state = intialState, action) => {
         console.log(action.payload,"reaching on filter")
         const filterData=state.sortData.filter((item)=>item.name.toLowerCase().includes(action.payload)||item.id.toLowerCase().includes(action.payload))
         console.log(filterData,"filterdd..")
+        const pageCount=filterData.length;
+        console.log(pageCount,"pc")
+        const tPage=Math.floor(pageCount/10)
         return{
             ...state,
-            data:filterData
+            data:filterData,
+            // totalbutt:tPage
 
         }
     }
+
+    case Types.PAGINATED_DATA: {
+        console.log("reac pagee")
+        // here pagenumber will comee..
+        const npage = (action.payload - 1) * 10;
+        let endPage = npage + 10-1;
+        // if (endPage > state.sortData.length) {
+        //   endPage = state.sortData.length - 1;
+        // }
+        // here basically we are making start and end page.
+        let paginatedArr = state.sortData.slice(npage, endPage);
+  
+        return {
+          ...state,
+          data: paginatedArr,
+        };
+      }
     default:
       return state;
   }

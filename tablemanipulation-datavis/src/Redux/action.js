@@ -20,3 +20,7 @@ export const sortData = (payload) => (dispatch) => {
 export const filterData=(dataToFilter)=>(dispatch)=>{
     dispatch({type:Types.FILTER_DATA,payload:dataToFilter})
 }
+
+export const paginatedData=(page)=>(dispatch)=>{
+    dispatch({type:Types.PAGINATED_DATA,payload:page})
+}
