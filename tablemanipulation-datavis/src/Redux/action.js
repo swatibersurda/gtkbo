@@ -16,3 +16,7 @@ export const getAllData = () => (dispatch) => {
 export const sortData = (payload) => (dispatch) => {
   dispatch({ type: Types.SORT_DATA,payload:payload});
 };
+
+export const filterData=(dataToFilter)=>(dispatch)=>{
+    dispatch({type:Types.FILTER_DATA,payload:dataToFilter})
+}

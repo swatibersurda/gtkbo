@@ -69,6 +69,17 @@ export const reducer = (state = intialState, action) => {
         data:sorted,
       };
     }
+    // filtering logicc..
+    case Types.FILTER_DATA:{
+        console.log(action.payload,"reaching on filter")
+        const filterData=state.sortData.filter((item)=>item.name.toLowerCase().includes(action.payload)||item.id.toLowerCase().includes(action.payload))
+        console.log(filterData,"filterdd..")
+        return{
+            ...state,
+            data:filterData
+
+        }
+    }
     default:
       return state;
   }
