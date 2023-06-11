@@ -185,7 +185,7 @@ body {
   /* height: 645.40576171875px; */
   width: 1327px;
   margin-left: 0px;
-  margin-top: 10px;
+  margin-top: 1px;
   border-radius: 0px;
 }
 .dataTable {
@@ -196,16 +196,30 @@ body {
   line-height: 17px;
   letter-spacing: 0em;
   text-align: left;
+  padding: 3%;
 }
-.th{
+th,td{
   font-family: Inter;
-  font-size: 12px;
+  /* font-size: 12px; */
   font-weight: 500;
   line-height: 17px;
   letter-spacing: 0em;
   text-align: left;
-  
+  color: #555;
 }
+.boldd{
+  font-weight: bolder;
+  color: black;
+}
+.green{
+  color:green;
+}
+.red{
+  color:red;
+}
+
+
+
 .ascdsceDiv{
   display: flex;
 

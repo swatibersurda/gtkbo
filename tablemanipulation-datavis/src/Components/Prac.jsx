@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllData, sortData, filterData } from "../Redux/action";
 import { PaginatedComponent } from "./PaginatedComponent";
 import { MdImportExport } from "react-icons/md";
+import {BiDotsVerticalRounded} from "react-icons/bi"
 
 const Prac = () => {
   const dispatch = useDispatch();
@@ -108,8 +109,10 @@ const Prac = () => {
           <table className="dataTable">
             <thead>
               <tr>
-                <th>-</th>
-                <th onClick={() => handleSortData("id")}>
+                <th style={{ marginLeft: "2px" }}>
+                  <input type="checkbox"/>
+                </th>
+                <th className="boldd" onClick={() => handleSortData("id")}>
                   ID{" "}
                   <MdImportExport
                     style={{ marginTop: "2px" }}
@@ -158,6 +161,7 @@ const Prac = () => {
                     color="black"
                   ></MdImportExport>
                 </th>
+                <th><BiDotsVerticalRounded></BiDotsVerticalRounded></th>
               </tr>
             </thead>
 
@@ -170,13 +174,14 @@ const Prac = () => {
                       <td>
                         <input type="checkbox" />
                       </td>
-                      <td>{item.id}</td>
+                      <td className="boldd">{item.id}</td>
                       <td>{item.name}</td>
                       <td>{item.rank}</td>
                       <td>{item.price_usd}</td>
-                      <td>{item.percent_change_24h}</td>
+                      <td className={`${item.percent_change_24h>1?"red":"green"}`}>{item.percent_change_24h}</td>
                       <td>{item.price_btc}</td>
                       <td>{item.market_cap_usd}</td>
+                      <th><BiDotsVerticalRounded></BiDotsVerticalRounded></th>
                     </tr>
                   );
                 })}
