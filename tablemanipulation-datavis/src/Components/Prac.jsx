@@ -106,7 +106,7 @@ const Prac = () => {
           </div>
         </div>
         <div className="tableActual">
-          <table className="dataTable">
+          <table className="dataTable" border="8" frame="RHS" rules="NONE" >
             <thead>
               <tr>
                 <th style={{ marginLeft: "2px" }}>
@@ -181,12 +181,19 @@ const Prac = () => {
                       <td className={`${item.percent_change_24h>1?"red":"green"}`}>{item.percent_change_24h}</td>
                       <td>{item.price_btc}</td>
                       <td>{item.market_cap_usd}</td>
-                      <th><BiDotsVerticalRounded></BiDotsVerticalRounded></th>
+                      <td><BiDotsVerticalRounded></BiDotsVerticalRounded></td>
                     </tr>
                   );
                 })}
             </tbody>
           </table>
+        </div>
+        <div className="paginatedComponet">
+        {sort === "none"  ? (
+            <PaginatedComponent></PaginatedComponent>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

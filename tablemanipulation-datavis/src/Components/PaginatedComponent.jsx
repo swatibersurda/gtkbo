@@ -20,7 +20,7 @@ export const PaginatedComponent = ({ sort, filterr }) => {
     <div>
       {buttonArray.map((item, index) => {
         return (
-          <button
+          <button className="blueColor"
             key={uuid()}
             value={index + 1}
             onClick={() => setPage(index + 1)}
