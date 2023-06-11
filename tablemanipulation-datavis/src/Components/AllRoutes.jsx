@@ -5,7 +5,7 @@ import Prac from "./Prac";
 export const AllRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home/>}></Route>
+      <Route path="/" element={<Prac/>}></Route>
     </Routes>
   );
 };
