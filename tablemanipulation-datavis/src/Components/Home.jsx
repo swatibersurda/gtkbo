@@ -4,16 +4,16 @@ import { getAllData, sortData, filterData } from "../Redux/action";
 import { PaginatedComponent } from "./PaginatedComponent";
 export const Home = () => {
   const dispatch = useDispatch();
-  const { data,} = useSelector((state) => state.AppReducer);
-  console.log(data, "dataammm");
-  //   means till now on first landing on the website there is no sorted order data.
+  const { data, page } = useSelector((state) => state.AppReducer);
+  //means till now on first landing on the website there is no sorted order data.
   const [notsort, setnotSort] = useState(false);
   const [sort, setSort] = useState("none");
   const [val, setVal] = useState("NO");
   const [filterr, setFilter] = useState("");
+  const [otherFilter, setOtherFilter] = useState("");
+  console.log(otherFilter, "pp");
 
   useEffect(() => {
-    console.log("i am renderinggg 1...");
     dispatch(getAllData());
   }, []);
 
@@ -90,7 +90,11 @@ export const Home = () => {
           </table>
         </div>
         <div>
-          <PaginatedComponent />
+          {sort === "none" || !filterr === "" ? (
+            <PaginatedComponent></PaginatedComponent>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>

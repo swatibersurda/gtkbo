@@ -1,11 +1,12 @@
 import * as Types from "./actionType";
 const intialState = {
   data: [],
-  //   taking for copy so that actuall state should be persist.
+  //taking for copy so that actuall state should be persist.
   sortData: [],
   totalbutt: 0,
   isLoading: false,
   isError: false,
+  page: 1,
 };
 export const reducer = (state = intialState, action) => {
   switch (action.type) {
@@ -35,6 +36,8 @@ export const reducer = (state = intialState, action) => {
     }
 
     case Types.SORT_DATA: {
+      const pageCount = state.sortData.length;
+      const tPage = Math.floor(pageCount / 10);
       // console.log(action.payload, "i am at sortreducer..");
       const { sort, val } = action.payload;
       let sorted;
@@ -69,13 +72,13 @@ export const reducer = (state = intialState, action) => {
       // console.log(sorted, "sortedd..",state.sortData.length);
       return {
         ...state,
-        data: sorted
+        data: sorted,
+        totalbutt: tPage,
       };
     }
 
     // filtering logicc..
     case Types.FILTER_DATA: {
-      console.log(action.payload, "reaching on filter");
       const filterData = state.sortData.filter(
         (item) =>
           item.name.toLowerCase().includes(action.payload) ||
@@ -92,8 +95,6 @@ export const reducer = (state = intialState, action) => {
       } else {
         tPage = Math.floor(pageCount / 10) + 1;
       }
-
-      // console.log(tPage, "tpage...");
       return {
         ...state,
         data: filterData,
@@ -101,28 +102,26 @@ export const reducer = (state = intialState, action) => {
       };
     }
 
+
+  
+
     case Types.PAGINATED_DATA: {
-      console.log(action.payload,"kkk i am reching shivaaa...")
+      console.log(action.payload, "kkk i am reching shivaaa...");
       // console.log("reac pagee");
       // here pagenumber will comee..
       const npage = (action.payload - 1) * 10;
       let endPage = npage + 10 - 1;
       // here basically we are making start and end page.
       let paginatedArr = state.sortData.slice(npage, endPage);
-      console.log("paginated arrtttttyyyyyYYY")
-     
       // this case will handle it you have only 5 or 6 records to display on that time need only
       // one button for that will use this for filter+pagination work together.
-    
-
+      console.log("runing here...,",paginatedArr)
       return {
         ...state,
-        data:paginatedArr,
-        
-
-
+        data: paginatedArr,
       };
     }
+
     default:
       return state;
   }
