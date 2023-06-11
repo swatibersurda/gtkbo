@@ -1,26 +1,28 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllData, sortData, filterData } from "../Redux/action";
-import {PaginatedComponent} from "./PaginatedComponent";
+import { PaginatedComponent } from "./PaginatedComponent";
 export const Home = () => {
   const dispatch = useDispatch();
-  const { data, sortD } = useSelector((state) => state.AppReducer);
+  const { data,} = useSelector((state) => state.AppReducer);
+  console.log(data, "dataammm");
   //   means till now on first landing on the website there is no sorted order data.
   const [notsort, setnotSort] = useState(false);
   const [sort, setSort] = useState("none");
   const [val, setVal] = useState("NO");
   const [filterr, setFilter] = useState("");
-  const [page, setPage] = useState(1);
 
-  
+  useEffect(() => {
+    console.log("i am renderinggg 1...");
+    dispatch(getAllData());
+  }, []);
+
   const handleSortData = (val) => {
     //  means now you want something in dsc or asc.
     if (!notsort) {
       setVal(val);
       setSort("asc");
       setnotSort(!notsort);
-      console.log("i am reaching herer...");
-      // dispatch(sortData({sort,val}))
     } else {
       setSort("desc");
       setnotSort(!notsort);
@@ -29,23 +31,17 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    dispatch(getAllData());
-  }, []);
-
-  useEffect(() => {
     dispatch(sortData({ sort, val }));
   }, [sort, notsort]);
 
   useEffect(() => {
     if (filterr !== "") {
-      console.log("reaching here...");
       dispatch(filterData(filterr));
     }
   }, [filterr]);
 
   return (
     <>
-    <PaginatedComponent/>
       <div className="parentDiv">
         <input
           value={filterr}
@@ -93,9 +89,10 @@ export const Home = () => {
             </tbody>
           </table>
         </div>
-        {/* <div><PaginatedComponent/></div> */}
+        <div>
+          <PaginatedComponent />
+        </div>
       </div>
-    
     </>
   );
 };
