@@ -9,7 +9,7 @@ import { TbFileExport } from "react-icons/tb";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllData, sortData, filterData } from "../Redux/action";
+import { getAllData, sortData, filterData,filterDataOther } from "../Redux/action";
 import { PaginatedComponent } from "./PaginatedComponent";
 import { MdImportExport } from "react-icons/md";
 import {BiDotsVerticalRounded} from "react-icons/bi"
@@ -22,12 +22,12 @@ const Prac = () => {
   const [sort, setSort] = useState("none");
   const [val, setVal] = useState("NO");
   const [filterr, setFilter] = useState("");
-  const [otherFilter, setOtherFilter] = useState("");
+  const [otherFilter, setOtherFilter] = useState(0);
   console.log(otherFilter, "pp");
 
   useEffect(() => {
     dispatch(getAllData());
-  }, []);
+  }, [getAllData]);
 
   const handleSortData = (val) => {
     //  means now you want something in dsc or asc.
@@ -51,6 +51,14 @@ const Prac = () => {
       dispatch(filterData(filterr));
     }
   }, [filterr]);
+  useEffect(() => {
+    if (otherFilter!==0) {
+      dispatch(filterDataOther(otherFilter));
+    }
+    if(otherFilter===""){
+      dispatch(getAllData())
+    }
+  }, [otherFilter]);
 
   return (
     <div className="cover">
@@ -84,7 +92,13 @@ const Prac = () => {
                 <div className="delIconDiv">
                   <BsFilter className="delIconsDiv"></BsFilter>
                 </div>
-                <div className="textDeleteDiv">Filter</div>
+                <div className="textDeleteDiv">
+                  <select onChange={(e)=>setOtherFilter(e.target.value)}>
+                    <option >Filter</option>
+                    <option value="">All</option>
+                    <option value="5">top5rank</option>
+                  </select>
+                </div>
               </div>
               {/* export div */}
               <div className="exportDiv">

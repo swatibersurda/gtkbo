@@ -157,11 +157,12 @@ body {
   background-color: #ffffff;
   border-radius: 7.692753314971924px;
   border: 0.961594px solid #d0d5dd;
+  margin-left: 22px;
 }
 .buttonDivAddNewCta {
   width: 145px;
   height: 100%;
-  margin-left: 10px;
+  margin-left: 20px;
   margin-top: 0px;
   display: flex;
   /* border-radius: 7.692753314971924px; */

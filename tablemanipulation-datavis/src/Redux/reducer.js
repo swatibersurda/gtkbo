@@ -101,6 +101,32 @@ export const reducer = (state = intialState, action) => {
         totalbutt: tPage,
       };
     }
+    case Types.FILTER_DATA_OTHER: {
+      console.log(action.payload,"filterde data other..",typeof(action.payload))
+      // let x;
+      // x=+(action.payload); 
+      // console.log(typeof(x),"cvvcv")
+      const filterData = state.sortData.filter(
+        (item) =>item.rank<=5
+      
+      );
+      console.log(filterData, "filterdd..");
+      const pageCount = filterData.length;
+      // console.log(pageCount, "pc");
+      let tPage;
+      // this case will handle it you have only 5 or 6 records to display on that time need only
+      // one button for that will use this for filter+pagination work together.
+      if (tPage % 10 === 0) {
+        tPage = Math.floor(pageCount / 10);
+      } else {
+        tPage = Math.floor(pageCount / 10) + 1;
+      }
+      return {
+        ...state,
+        data: filterData,
+        totalbutt: tPage,
+      };
+    }
 
 
   
