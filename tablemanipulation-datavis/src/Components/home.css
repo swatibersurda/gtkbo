@@ -5,12 +5,13 @@ body {
   background: #2768ba;
 }
 .tablee {
-  height: 760.9093627929688px;
+  /* height: 760.9093627929688px; */
   width: 1327px;
   margin-left: 160px;
   margin-top: 82px;
   border-radius: 7.692753314971924px;
   background: #ffffff;
+  /* display: flex; */
 }
 .cardHeader {
   height: 94.34855651855469px;
@@ -178,6 +179,36 @@ body {
   margin-top: 8px;
   color: white;
   margin-left: 8px;
+}
+.tableActual {
+  /* border: 1px solid yellow; */
+  /* height: 645.40576171875px; */
+  width: 1327px;
+  margin-left: 0px;
+  margin-top: 10px;
+  border-radius: 0px;
+}
+.dataTable {
+  width: 100%;
+  font-family: Inter;
+  /* font-size: 12px; */
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.th{
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  
+}
+.ascdsceDiv{
+  display: flex;
+
 }
 
 ::-webkit-scrollbar {
