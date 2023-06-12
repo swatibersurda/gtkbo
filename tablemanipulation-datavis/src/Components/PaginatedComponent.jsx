@@ -23,7 +23,7 @@ export const PaginatedComponent = () => {
     dispatch(filterAndPagination(page));
   }, [filtering, page]);
   return (
-    <div>
+    <>
       {buttonArray.map((item, index) => {
         return (
           <button 
@@ -37,6 +37,6 @@ export const PaginatedComponent = () => {
           </button>
         );
       })}
-    </div>
+    </>
   );
 };

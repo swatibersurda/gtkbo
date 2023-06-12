@@ -17,7 +17,6 @@ import { PaginatedComponent } from "./PaginatedComponent";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { MdUpload, MdDownload } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { NotFound } from "./NotFound";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -274,7 +273,6 @@ export const Home = () => {
                 </th>
               </tr>
             </thead>
-
             <tbody>
               {data?.length === 0 ? (
                 <h1 className="notFound"></h1>
@@ -352,7 +350,13 @@ export const Home = () => {
         <Link className="anc" to="/datavisual">
           Real Time Data Visulaization? Click on the Link
         </Link>
+        <div className="footerDiv">
+        <div className="footerInnerDiv">
+          
+        </div>
       </div>
+      </div>
+     
     </div>
   );
 };

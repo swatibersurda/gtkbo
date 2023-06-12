@@ -5,11 +5,11 @@ body {
   background: #2768ba;
 }
 .tablee {
-  /* height: 760.9093627929688px; */
   width: 1327px;
+  margin: auto;
   margin-left: 160px;
   margin-top: 82px;
-  border-radius: 7.692753314971924px;
+  border-radius: 7px;
   background: #ffffff;
   /* display: flex; */
 }
@@ -104,6 +104,10 @@ body {
 .inpu {
   width: 460px;
   border: none;
+}
+textarea:focus,
+input:focus {
+  outline: none;
 }
 .actionss {
   height: 39.23188400268555px;
@@ -231,15 +235,17 @@ th {
 }
 .paginatedComponet {
   width: 50%;
-  margin: auto;
-  margin-bottom: 10px;
-  /* border:1px solid crimson; */
   padding: 10px;
+  margin: auto;
+  margin-bottom: 30px;
+  margin-top: 10%;
 }
 .blueColor {
   background-color: #0070ff;
   color: white;
   border: 1px solid white;
+  padding: 10px;
+  margin-left: 0px;
 }
 td:first-child {
   width: 63.47px;
@@ -284,157 +290,30 @@ td:last-child {
   color: #0070ff;
   font-weight: 700;
 }
-.notFound{
-  /* text-align: center; */
-  color:black;
-  margin: auto;
-  margin-top: 82%;
-  /* margin-left:60%; */
-  width:80%;
-  /* height:100px; */
-  /* border:1px solid red; */
+.footerDiv {
+  width: 100%;
+  height: 10px;
+  border-radius: 7px;
+}
+.footerInnerDiv {
+  height: 5px;
+  width: 391.3688659667969px;
+  border-radius: 11.539129257202148px;
+  background: #eaecf0;
 }
 /* responsivnesss start here. */
-@media only screen and (min-width: 0px) and (max-width: 368px) {
-  body {
-    /* height: 960px; */
-    background: #2768ba;
-  }
-  .tablee {
-    /* height: 760.9093627929688px; */
-    width: 100%;
-    margin: auto;
-    /* margin-left: 8px; */
-    margin-top: 82px;
-    border-radius: 7.692753314971924px;
-    background: #ffffff;
-    /* display: flex; */
-  }
 
-  .cardHeader {
-    height: 94.34855651855469px;
-    width: 100%;
-    margin-left: 0px;
-    margin-top: 0px;
-    border-radius: 0px;
-    border-bottom: 0.961594px solid #eaecf0;
-  }
-  .contentDiv {
-    display: flex;
-    height: 94.34855651855469px;
-    width: 100%;
-    margin-left: 0px;
-    margin-top: 0px;
-    border-radius: 0px;
-    gap: 15.39px;
-    padding: 19px 23px 18px 23px;
-  }
-  .textSupportDiv {
-    width: 680px;
-    margin-left: 6px;
-  }
-  .labelForText {
-    margin-left: 5px;
-  }
-  .inputDiv {
-    margin-left: 2px;
-  }
-  .iconDiv {
-    margin-left: 5px;
-  }
-  .serchTextDiv {
-    display: none;
-  }
-  .actionss {
-    width: 400px;
-    margin-left: 2px;
-    border: 1px solid green;
-  }
-  .del,
-  .filter,
-  .exportDiv {
-    /* height:39px; */
-    width: 50px;
-  }
-  .delIconDiv {
-    margin-left: 0%;
-  }
-  .textDeleteDiv {
-    margin-left: 2px;
-  }
-
-  th,
-  td {
-    font-size: 18px;
-  }
-
-  td:first-child {
-    width: 3%;
-    /* border:1px solid grey; */
-  }
-  td:nth-child(2) {
-    width: 7%;
-    /* border:1px solid green; */
-  }
-  td:nth-child(3) {
-    width: 9%;
-    /* border:1px solid crimson; */
-  }
-  td:nth-child(4) {
-    width: 7%;
-    /* border:1px solid pink; */
-  }
-  td:nth-child(5) {
-    width: 12%;
-    /* border:1px solid yellow; */
-  }
-  td:nth-child(6) {
-    width: 16%;
-    /* border:1px solid yellow; */
-  }
-  td:nth-child(7) {
-    width: 12%;
-    /* border:1px solid brown; */
-  }
-  td:nth-child(8) {
-    width: 12%;
-    /* border:1px solid brown; */
-  }
-
-  td:last-child {
-    width: 15%; /* set width of last column to 60% */
-  }
-  .paginatedComponet {
-    width: 100%;
-    margin: auto;
-    margin-bottom: 10px;
-    /* border:1px solid crimson; */
-    padding: 10px;
-  }
-  .dataParentDiv {
-    width: 100%;
-    background-color: white;
-    height: auto;
-    margin: auto;
-    margin-top: 5%;
-    margin-bottom: 2%;
-    /* display: flex; */
-  }
-}
 @media only screen and (min-width: 368px) and (max-width: 786px) {
   body {
     /* height: 960px; */
     background: #2768ba;
   }
   .tablee {
-    /* height: 760.9093627929688px; */
     width: 100%;
     margin: auto;
-    /* margin-left: 8px; */
-    margin-top: 82px;
-    border-radius: 7.692753314971924px;
+    margin-left: 2px;
+    margin-top: 20%;
     background: #ffffff;
-    /* display: flex; */
   }
 
   .cardHeader {
@@ -448,39 +327,31 @@ td:last-child {
   .contentDiv {
     display: flex;
     height: 94.34855651855469px;
-    width: 100%;
-    margin-left: 0px;
-    margin-top: 0px;
-    border-radius: 0px;
-    gap: 15.39px;
-    padding: 19px 23px 18px 23px;
   }
   .textSupportDiv {
-    width: 680px;
+    width: 450px;
     margin-left: 6px;
   }
   .labelForText {
     margin-left: 5px;
   }
   .inputDiv {
-    margin-left: 2px;
+    width: 250px;
+    margin-left: 12px;
   }
   .iconDiv {
     margin-left: 5px;
   }
-  .serchTextDiv {
-    display: none;
-  }
   .actionss {
-    width: 400px;
-    margin-left: 2px;
-    border: 1px solid green;
+    width: 500px;
+    margin-left: 9px;
   }
+
   .del,
   .filter,
   .exportDiv {
     /* height:39px; */
-    width: 50px;
+    width: 80px;
   }
   .delIconDiv {
     margin-left: 0%;
@@ -488,26 +359,42 @@ td:last-child {
   .textDeleteDiv {
     margin-left: 2px;
   }
-
+  .addctaDiv {
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-top: 8px;
+    color: white;
+    margin-left: 8px;
+  }
+  .tableActual {
+    width: 100%;
+    margin-left: 0px;
+    margin-top: 15px;
+    border-radius: 0px;
+  }
   th,
   td {
-    font-size: 18px;
+    font-size: 15px;
   }
 
   td:first-child {
-    width: 3%;
+    width: 2%;
     /* border:1px solid grey; */
   }
   td:nth-child(2) {
-    width: 7%;
+    width: 4%;
     /* border:1px solid green; */
   }
   td:nth-child(3) {
-    width: 9%;
+    width: 6%;
     /* border:1px solid crimson; */
   }
   td:nth-child(4) {
-    width: 7%;
+    width: 4%;
     /* border:1px solid pink; */
   }
   td:nth-child(5) {
@@ -515,7 +402,7 @@ td:last-child {
     /* border:1px solid yellow; */
   }
   td:nth-child(6) {
-    width: 16%;
+    width: 12%;
     /* border:1px solid yellow; */
   }
   td:nth-child(7) {
@@ -523,146 +410,29 @@ td:last-child {
     /* border:1px solid brown; */
   }
   td:nth-child(8) {
-    width: 12%;
+    width: 10%;
     /* border:1px solid brown; */
   }
 
-  td:last-child {
-    width: 15%; /* set width of last column to 60% */
-  }
-  .paginatedComponet {
-    width: 100%;
-    margin: auto;
-    margin-bottom: 10px;
-    /* border:1px solid crimson; */
-    padding: 10px;
-  }
   .dataParentDiv {
     width: 100%;
-    background-color: white;
-    height: auto;
-    margin: auto;
-    margin-top: 5%;
-    margin-bottom: 2%;
     /* display: flex; */
+  }
+  .areaChart,
+  .lineChart {
+    width: 30%;
+    margin: auto;
   }
 }
-@media only screen and (min-width: 789px) and (max-width: 1300px) {
-  body {
-    /* height: 960px; */
-    background: #2768ba;
-  }
+
+/* 800 to 1300 */
+@media only screen and (min-width: 769px) and (max-width: 1300px) {
   .tablee {
-    /* height: 760.9093627929688px; */
     width: 100%;
     margin: auto;
-    /* margin-left: 8px; */
-    margin-top: 82px;
-    border-radius: 7.692753314971924px;
+    margin-left: 2px;
+    margin-top: 20%;
     background: #ffffff;
-    /* display: flex; */
-  }
-
-  .cardHeader {
-    height: 94.34855651855469px;
-    width: 100%;
-    margin-left: 0px;
-    margin-top: 0px;
-    border-radius: 0px;
-    border-bottom: 0.961594px solid #eaecf0;
-  }
-  .contentDiv {
-    display: flex;
-    height: 94.34855651855469px;
-    width: 100%;
-    margin-left: 0px;
-    margin-top: 0px;
-    border-radius: 0px;
-    gap: 15.39px;
-    padding: 19px 23px 18px 23px;
-  }
-  .textSupportDiv {
-    width: 680px;
-    margin-left: 6px;
-  }
-  .labelForText {
-    margin-left: 5px;
-  }
-  .inputDiv {
-    margin-left: 2px;
-  }
-  .iconDiv {
-    margin-left: 5px;
-  }
-  .serchTextDiv {
-    display: none;
-  }
-  .actionss {
-    width: 400px;
-    margin-left: 2px;
-    border: 1px solid green;
-  }
-  .del,
-  .filter,
-  .exportDiv {
-    /* height:39px; */
-    width: 50px;
-  }
-  .delIconDiv {
-    margin-left: 0%;
-  }
-  .textDeleteDiv {
-    margin-left: 2px;
-  }
-
-  th,
-  td {
-    font-size: 18px;
-  }
-
-  td:first-child {
-    width: 3%;
-    /* border:1px solid grey; */
-  }
-  td:nth-child(2) {
-    width: 7%;
-    /* border:1px solid green; */
-  }
-  td:nth-child(3) {
-    width: 9%;
-    /* border:1px solid crimson; */
-  }
-  td:nth-child(4) {
-    width: 7%;
-    /* border:1px solid pink; */
-  }
-  td:nth-child(5) {
-    width: 12%;
-    /* border:1px solid yellow; */
-  }
-  td:nth-child(6) {
-    width: 16%;
-    /* border:1px solid yellow; */
-  }
-  td:nth-child(7) {
-    width: 12%;
-    /* border:1px solid brown; */
-  }
-  td:nth-child(8) {
-    width: 12%;
-    /* border:1px solid brown; */
-  }
-
-  td:last-child {
-    width: 15%; /* set width of last column to 60% */
-  }
-
-  .paginatedComponet {
-    width: 100%;
-    margin: auto;
-    margin-bottom: 10px;
-    border: 1px solid crimson;
-    padding: 10px;
   }
   .dataParentDiv {
     width: 100%;
@@ -672,6 +442,13 @@ td:last-child {
     margin-top: 5%;
     margin-bottom: 2%;
     /* display: flex; */
+  }
+  .areaChart,
+  .lineChart {
+    width: 40%;
+    height: 90%;
+    margin: 2%;
+    margin-bottom: 2%;
   }
 }
 ::-webkit-scrollbar {

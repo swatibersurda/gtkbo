@@ -121,7 +121,7 @@ export const reducer = (state = intialState, action) => {
       if (tPage % 10 === 0) {
         tPage = Math.floor(pageCount / 10);
       } else {
-        tPage = Math.floor(pageCount / 10) + 1;
+        tPage = Math.floor(pageCount / 10) ;
       }
       return {
         ...state,

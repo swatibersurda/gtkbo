@@ -24,7 +24,7 @@ const DataVisulatization = () => {
     <>
       <div className="dataParentDiv">
         <div className="lineChart">
-          <h1>Rank To Id Relation</h1>
+          <h1>Rank To Id </h1>
           <ResponsiveContainer width={"90%"} aspect={3}>
             <LineChart
               width={100}
@@ -55,11 +55,9 @@ const DataVisulatization = () => {
             </LineChart>
           </ResponsiveContainer>
         </div>
-
         <div className="areaChart" width={"80%"} aspect={3}>
-            <h1>Rank To Percent_Change_1h </h1>
+          <h1>Rank To Percent_Change_1h </h1>
           <ResponsiveContainer width={"90%"} aspect={3}>
-
             <BarChart width={600} height={250} data={data}>
               {/* <CartesianGrid strokeDasharray="3 3" /> */}
               <XAxis dataKey="name" />
