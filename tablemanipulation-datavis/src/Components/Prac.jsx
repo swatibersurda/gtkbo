@@ -9,10 +9,16 @@ import { TbFileExport } from "react-icons/tb";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllData, sortData, filterData,filterDataOther } from "../Redux/action";
+import {
+  getAllData,
+  sortData,
+  filterData,
+  filterDataOther,
+} from "../Redux/action";
 import { PaginatedComponent } from "./PaginatedComponent";
 import { MdImportExport } from "react-icons/md";
-import {BiDotsVerticalRounded} from "react-icons/bi"
+import { BiDotsVerticalRounded } from "react-icons/bi";
+import { MdUpload, MdDownload } from "react-icons/md";
 
 const Prac = () => {
   const dispatch = useDispatch();
@@ -20,10 +26,11 @@ const Prac = () => {
   //means till now on first landing on the website there is no sorted order data.
   const [notsort, setnotSort] = useState(false);
   const [sort, setSort] = useState("none");
-  const [val, setVal] = useState("NO");
+  const [val, setVal] = useState("");
   const [filterr, setFilter] = useState("");
   const [otherFilter, setOtherFilter] = useState(0);
   console.log(otherFilter, "pp");
+  console.log(val, "valll");
 
   useEffect(() => {
     dispatch(getAllData());
@@ -52,11 +59,11 @@ const Prac = () => {
     }
   }, [filterr]);
   useEffect(() => {
-    if (otherFilter!==0) {
+    if (otherFilter !== 0) {
       dispatch(filterDataOther(otherFilter));
     }
-    if(otherFilter===""){
-      dispatch(getAllData())
+    if (otherFilter === "") {
+      dispatch(getAllData());
     }
   }, [otherFilter]);
 
@@ -93,8 +100,8 @@ const Prac = () => {
                   <BsFilter className="delIconsDiv"></BsFilter>
                 </div>
                 <div className="textDeleteDiv">
-                  <select onChange={(e)=>setOtherFilter(e.target.value)}>
-                    <option >Filter</option>
+                  <select onChange={(e) => setOtherFilter(e.target.value)}>
+                    <option>Filter</option>
                     <option value="">All</option>
                     <option value="5">top5rank</option>
                   </select>
@@ -120,62 +127,128 @@ const Prac = () => {
           </div>
         </div>
         <div className="tableActual">
-          <table className="dataTable" border="8" frame="RHS" rules="NONE" >
+          <table className="dataTable" border="8" frame="RHS" rules="NONE">
             <thead>
               <tr>
                 <th style={{ marginLeft: "2px" }}>
-                  <input type="checkbox"/>
+                  <input type="checkbox" />
                 </th>
                 <th className="boldd" onClick={() => handleSortData("id")}>
                   ID{" "}
-                  <MdImportExport
-                    style={{ marginTop: "2px" }}
-                    color="black"
-                  ></MdImportExport>
+                  {sort === "none" ? (
+                    ""
+                  ) : sort === "asc" ? (
+                    <MdUpload
+                      style={{ marginTop: "2px" }}
+                      color="black"
+                    ></MdUpload>
+                  ) : (
+                    <MdDownload
+                      style={{ marginTop: "2px" }}
+                      color="black"
+                    ></MdDownload>
+                  )}
+                  
                 </th>
                 <th onClick={() => handleSortData("name")}>
                   Name
-                  <MdImportExport
-                    style={{ marginTop: "2px" }}
-                    color="black"
-                  ></MdImportExport>
+                  {sort === "none" ? (
+                    ""
+                  ) : sort === "asc" ? (
+                    <MdUpload
+                      style={{ marginTop: "2px" }}
+                      color="black"
+                    ></MdUpload>
+                  ) : (
+                    <MdDownload
+                      style={{ marginTop: "2px" }}
+                      color="black"
+                    ></MdDownload>
+                  )}
                 </th>
                 <th onClick={() => handleSortData("rank")}>
                   Rank
-                  <MdImportExport
-                    style={{ marginTop: "2px" }}
-                    color="black"
-                  ></MdImportExport>
+                  {sort === "none" ? (
+                    ""
+                  ) : sort === "asc" ? (
+                    <MdUpload
+                      style={{ marginTop: "2px" }}
+                      color="black"
+                    ></MdUpload>
+                  ) : (
+                    <MdDownload
+                      style={{ marginTop: "2px" }}
+                      color="black"
+                    ></MdDownload>
+                  )}
                 </th>
                 <th onClick={() => handleSortData("price_usd")}>
                   Price(USD)
-                  <MdImportExport
-                    style={{ marginTop: "2px" }}
-                    color="black"
-                  ></MdImportExport>
+                  {sort === "none" ? (
+                    ""
+                  ) : sort === "asc" ? (
+                    <MdUpload
+                      style={{ marginTop: "2px" }}
+                      color="black"
+                    ></MdUpload>
+                  ) : (
+                    <MdDownload
+                      style={{ marginTop: "2px" }}
+                      color="black"
+                    ></MdDownload>
+                  )}
                 </th>
                 <th onClick={() => handleSortData("percent_change_24h")}>
                   Percent Change (24h)
-                  <MdImportExport
-                    style={{ marginTop: "2px" }}
-                    color="black"
-                  ></MdImportExport>
+                  {sort === "none" ? (
+                    ""
+                  ) : sort === "asc" ? (
+                    <MdUpload
+                      style={{ marginTop: "2px" }}
+                      color="black"
+                    ></MdUpload>
+                  ) : (
+                    <MdDownload
+                      style={{ marginTop: "2px" }}
+                      color="black"
+                    ></MdDownload>
+                  )}
                 </th>
                 <th onClick={() => handleSortData("price_btc")}>
                   Price (BTC)
-                  <MdImportExport
-                    style={{ marginTop: "2px" }}
-                    color="black"
-                  ></MdImportExport>
+                  {sort === "none" ? (
+                    ""
+                  ) : sort === "asc" ? (
+                    <MdUpload
+                      style={{ marginTop: "2px" }}
+                      color="black"
+                    ></MdUpload>
+                  ) : (
+                    <MdDownload
+                      style={{ marginTop: "2px" }}
+                      color="black"
+                    ></MdDownload>
+                  )}
                 </th>
                 <th onClick={() => handleSortData("market_cap_usd")}>
                   Market Cap (USD)
-                  <MdImportExport
-                    style={{ marginTop: "2px" }}
-                    color="black"
-                  ></MdImportExport>
+                  {sort === "none" ? (
+                    ""
+                  ) : sort === "asc" ? (
+                    <MdUpload
+                      style={{ marginTop: "2px" }}
+                      color="black"
+                    ></MdUpload>
+                  ) : (
+                    <MdDownload
+                      style={{ marginTop: "2px" }}
+                      color="black"
+                    ></MdDownload>
+                  )}
                 </th>
-                <th><BiDotsVerticalRounded></BiDotsVerticalRounded></th>
+                <th>
+                  <BiDotsVerticalRounded></BiDotsVerticalRounded>
+                </th>
               </tr>
             </thead>
 
@@ -192,10 +265,18 @@ const Prac = () => {
                       <td>{item.name}</td>
                       <td>{item.rank}</td>
                       <td>{item.price_usd}</td>
-                      <td className={`${item.percent_change_24h>1?"red":"green"}`}>{item.percent_change_24h}</td>
+                      <td
+                        className={`${
+                          item.percent_change_24h > 1 ? "red" : "green"
+                        }`}
+                      >
+                        {item.percent_change_24h}
+                      </td>
                       <td>{item.price_btc}</td>
                       <td>{item.market_cap_usd}</td>
-                      <td><BiDotsVerticalRounded></BiDotsVerticalRounded></td>
+                      <td>
+                        <BiDotsVerticalRounded></BiDotsVerticalRounded>
+                      </td>
                     </tr>
                   );
                 })}
@@ -203,11 +284,7 @@ const Prac = () => {
           </table>
         </div>
         <div className="paginatedComponet">
-        {sort === "none"  ? (
-            <PaginatedComponent></PaginatedComponent>
-          ) : (
-            ""
-          )}
+          {sort === "none" ? <PaginatedComponent></PaginatedComponent> : ""}
         </div>
       </div>
     </div>
