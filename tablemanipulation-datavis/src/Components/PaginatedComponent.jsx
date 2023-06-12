@@ -10,10 +10,7 @@ export const PaginatedComponent = () => {
   const filtering = useSelector((state) => state.AppReducer.filtering);
   const otherFiltering = useSelector((state) => state.AppReducer.otherFiltering);
   let buttonArray = new Array(totalPage).fill(0);
-  const [page, setPage] = useState(1);
-  // console.log(filtering, "filterringggggg..");
-  console.log(otherFiltering,"oooo")
-
+  const [page, setPage] = useState(1);  
   // this useEffect will render on first render
   useEffect(() => {
     if (page >= 1 && !filtering && !otherFiltering) {

@@ -284,7 +284,16 @@ td:last-child {
   color: #0070ff;
   font-weight: 700;
 }
-
+.notFound{
+  /* text-align: center; */
+  color:black;
+  margin: auto;
+  margin-top: 82%;
+  /* margin-left:60%; */
+  width:80%;
+  /* height:100px; */
+  /* border:1px solid red; */
+}
 /* responsivnesss start here. */
 @media only screen and (min-width: 0px) and (max-width: 368px) {
   body {

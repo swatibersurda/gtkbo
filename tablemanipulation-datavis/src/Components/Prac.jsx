@@ -30,7 +30,6 @@ const Prac = () => {
   const [val, setVal] = useState("");
   const [filterr, setFilter] = useState("");
   const [otherFilter, setOtherFilter] = useState("none");
-  console.log(data,"data...")
   // will run on first render.
   useEffect(() => {
     dispatch(getAllData());
@@ -65,7 +64,6 @@ const Prac = () => {
 
   // if otherFilter or dropdown has selected then this useEffect will run.
   useEffect(() => {
-    console.log("i am rendering");
     if (otherFilter !== "none") {
       dispatch(filterDataOther(otherFilter));
     }
