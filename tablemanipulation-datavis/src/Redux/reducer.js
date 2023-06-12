@@ -6,7 +6,8 @@ const intialState = {
   totalbutt: 0,
   isLoading: false,
   isError: false,
-  page: 1,
+  filtering:false,
+  filterDataCopy:[]
 };
 export const reducer = (state = intialState, action) => {
   switch (action.type) {
@@ -17,6 +18,7 @@ export const reducer = (state = intialState, action) => {
       };
     }
     case Types.GET_ALL_DATA_SUCESS: {
+      console.log(action.payload,"acion at sucess")
       const pageCount = action.payload.data.length;
       const tPage = Math.floor(pageCount / 10);
       return {
@@ -95,10 +97,14 @@ export const reducer = (state = intialState, action) => {
       } else {
         tPage = Math.floor(pageCount / 10) + 1;
       }
+      console.log("filterddata",filterData)
       return {
         ...state,
         data: filterData,
         totalbutt: tPage,
+        filtering:true,
+        filterDataCopy:filterData
+
       };
     }
     case Types.FILTER_DATA_OTHER: {
@@ -130,23 +136,33 @@ export const reducer = (state = intialState, action) => {
 
 
   
-
+  // will work for normally or non filter data..
     case Types.PAGINATED_DATA: {
       console.log(action.payload, "kkk i am reching shivaaa...");
-      // console.log("reac pagee");
-      // here pagenumber will comee..
       const npage = (action.payload - 1) * 10;
       let endPage = npage + 10 - 1;
-      // here basically we are making start and end page.
       let paginatedArr = state.sortData.slice(npage, endPage);
       // this case will handle it you have only 5 or 6 records to display on that time need only
       // one button for that will use this for filter+pagination work together.
-      console.log("runing here...,",paginatedArr)
+      console.log(paginatedArr,"ppppppqqq")
       return {
         ...state,
-        data: paginatedArr,
+        data: [...paginatedArr],
+        
       };
     }
+   case Types.FILTER_AND_PAGINATION:{
+    console.log(action.payload,"fiipageiii..",state.data)
+    const npage = (action.payload - 1) * 10;
+      let endPage = npage + 10 - 1;
+      // here actually filterDatacopy will persist the filtered data as data is keep
+      let paginatedArr = state.filterDataCopy.slice(npage, endPage);
+      console.log(paginatedArr,"mmmmmohittt...")
+      return{
+        ...state,
+        data: [...paginatedArr]
+      }
+   }
 
     default:
       return state;

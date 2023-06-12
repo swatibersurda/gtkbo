@@ -28,4 +28,8 @@ export const filterDataOther = (dataToFilter) => (dispatch) => {
   dispatch({ type: Types.FILTER_DATA_OTHER, payload: dataToFilter });
 };
 
+export const filterAndPagination=(page)=>(dispatch)=>{
+   dispatch({type:Types.FILTER_AND_PAGINATION,payload:page})
+}
+
 

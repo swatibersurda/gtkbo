@@ -1,7 +1,7 @@
 import React from "react";
 import "./home.css";
-import { FaTrashAlt } from "react-icons/fa";
-import { IoFilterSharp } from "react-icons/io5";
+// import { FaTrashAlt } from "react-icons/fa";
+// import { IoFilterSharp } from "react-icons/io5";
 import { AiOutlineSearch } from "react-icons/ai";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BsFilter } from "react-icons/bs";
@@ -16,27 +16,26 @@ import {
   filterDataOther,
 } from "../Redux/action";
 import { PaginatedComponent } from "./PaginatedComponent";
-import { MdImportExport } from "react-icons/md";
+// import { MdImportExport } from "react-icons/md";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { MdUpload, MdDownload } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Prac = () => {
   const dispatch = useDispatch();
-  const { data, page } = useSelector((state) => state.AppReducer);
+  const { data } = useSelector((state) => state.AppReducer);
   //means till now on first landing on the website there is no sorted order data.
   const [notsort, setnotSort] = useState(false);
   const [sort, setSort] = useState("none");
   const [val, setVal] = useState("");
   const [filterr, setFilter] = useState("");
   const [otherFilter, setOtherFilter] = useState(0);
-  // console.log(otherFilter, "pp");
-  console.log(notsort, "notsortttt");
-  console.log(val, "valll");
-  // console.log(data, "data....");
+  // console.log(data,"daa fetch..")
 
   useEffect(() => {
+    
     dispatch(getAllData());
-  }, [getAllData]);
+  }, []);
 
   const handleSortData = (val) => {
     //  means now you want something in dsc or asc.
@@ -55,7 +54,7 @@ const Prac = () => {
 
   useEffect(() => {
     dispatch(sortData({ sort, val }));
-  }, [sort, notsort]);
+  }, [sort, notsort, val]);
 
   useEffect(() => {
     if (filterr !== "") {
@@ -65,9 +64,6 @@ const Prac = () => {
   useEffect(() => {
     if (otherFilter !== 0) {
       dispatch(filterDataOther(otherFilter));
-    }
-    if (otherFilter === "") {
-      dispatch(getAllData());
     }
   }, [otherFilter]);
 
@@ -107,7 +103,7 @@ const Prac = () => {
                   <select onChange={(e) => setOtherFilter(e.target.value)}>
                     <option>Filter</option>
                     <option value="">All</option>
-                    <option value="5">top5rank</option>
+                    <option value="all">top5rank</option>
                   </select>
                 </div>
               </div>
@@ -350,6 +346,9 @@ const Prac = () => {
         <div className="paginatedComponet">
           {sort === "none" ? <PaginatedComponent></PaginatedComponent> : ""}
         </div>
+        <Link className="anc" to="/datavisual">
+          <p>Real Time Data Visulaization? Click on the Link</p>
+        </Link>
       </div>
     </div>
   );
