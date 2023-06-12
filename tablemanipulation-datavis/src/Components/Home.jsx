@@ -349,7 +349,7 @@ export const Home = () => {
           {sort === "none" ? <PaginatedComponent></PaginatedComponent> : ""}
         </div>
         <Link className="anc" to="/datavisual">
-          Real Time Data Visulaization? Click on the Link
+          Real Time Data Visualization? Click on the Link.
         </Link>
         <div className="footerDiv">
         <div className="footerInnerDiv">

@@ -246,6 +246,7 @@ th {
   border: 1px solid white;
   padding: 10px;
   margin-left: 0px;
+  cursor: pointer;
 }
 td:first-child {
   width: 63.47px;
