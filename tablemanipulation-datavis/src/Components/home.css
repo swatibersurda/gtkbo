@@ -260,6 +260,10 @@ td:nth-child(5) {
 td:last-child {
   width: 69.23px; /* set width of last column to 60% */
 }
+.highLightBorder{
+  background-color: green;
+  color:white;
+}
 
 /* responsivnesss start here. */
 @media only screen and (min-width: 0px) and (max-width: 368px) {

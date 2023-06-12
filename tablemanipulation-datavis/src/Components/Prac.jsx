@@ -29,8 +29,10 @@ const Prac = () => {
   const [val, setVal] = useState("");
   const [filterr, setFilter] = useState("");
   const [otherFilter, setOtherFilter] = useState(0);
-  console.log(otherFilter, "pp");
+  // console.log(otherFilter, "pp");
+  console.log(notsort, "notsortttt");
   console.log(val, "valll");
+  // console.log(data, "data....");
 
   useEffect(() => {
     dispatch(getAllData());
@@ -38,11 +40,13 @@ const Prac = () => {
 
   const handleSortData = (val) => {
     //  means now you want something in dsc or asc.
+    console.log(val, "val.....");
     if (!notsort) {
       setVal(val);
       setSort("asc");
       setnotSort(!notsort);
     } else {
+      setVal(val);
       setSort("desc");
       setnotSort(!notsort);
     }
@@ -133,11 +137,14 @@ const Prac = () => {
                 <th style={{ marginLeft: "2px" }}>
                   <input type="checkbox" />
                 </th>
-                <th className="boldd" onClick={() => handleSortData("id")}>
+                <th
+                  className={`${val === "id" ? "highLightBorder boldd" : ""}`}
+                  onClick={() => handleSortData("id")}
+                >
                   ID{" "}
                   {sort === "none" ? (
                     ""
-                  ) : sort === "asc" ? (
+                  ) : sort === "asc" && val === "id" ? (
                     <MdUpload
                       style={{ marginTop: "2px" }}
                       color="black"
@@ -148,13 +155,15 @@ const Prac = () => {
                       color="black"
                     ></MdDownload>
                   )}
-                  
                 </th>
-                <th onClick={() => handleSortData("name")}>
+                <th
+                  onClick={() => handleSortData("name")}
+                  className={`${val === "name" ? "highLightBorder" : ""}`}
+                >
                   Name
                   {sort === "none" ? (
                     ""
-                  ) : sort === "asc" ? (
+                  ) : sort === "asc" && val === "name" ? (
                     <MdUpload
                       style={{ marginTop: "2px" }}
                       color="black"
@@ -166,11 +175,14 @@ const Prac = () => {
                     ></MdDownload>
                   )}
                 </th>
-                <th onClick={() => handleSortData("rank")}>
+                <th
+                  onClick={() => handleSortData("rank")}
+                  className={`${val === "rank" ? "highLightBorder" : ""}`}
+                >
                   Rank
                   {sort === "none" ? (
                     ""
-                  ) : sort === "asc" ? (
+                  ) : sort === "asc" && val === "rank" ? (
                     <MdUpload
                       style={{ marginTop: "2px" }}
                       color="black"
@@ -182,11 +194,14 @@ const Prac = () => {
                     ></MdDownload>
                   )}
                 </th>
-                <th onClick={() => handleSortData("price_usd")}>
+                <th
+                  onClick={() => handleSortData("price_usd")}
+                  className={`${val === "price_usd" ? "highLightBorder" : ""}`}
+                >
                   Price(USD)
                   {sort === "none" ? (
                     ""
-                  ) : sort === "asc" ? (
+                  ) : sort === "asc" && val === "price_usd" ? (
                     <MdUpload
                       style={{ marginTop: "2px" }}
                       color="black"
@@ -198,11 +213,16 @@ const Prac = () => {
                     ></MdDownload>
                   )}
                 </th>
-                <th onClick={() => handleSortData("percent_change_24h")}>
+                <th
+                  onClick={() => handleSortData("percent_change_24h")}
+                  className={`${
+                    val === "percent_change_24h" ? "highLightBorder" : ""
+                  }`}
+                >
                   Percent Change (24h)
                   {sort === "none" ? (
                     ""
-                  ) : sort === "asc" ? (
+                  ) : sort === "asc" && val === "percent_change_24h" ? (
                     <MdUpload
                       style={{ marginTop: "2px" }}
                       color="black"
@@ -214,11 +234,14 @@ const Prac = () => {
                     ></MdDownload>
                   )}
                 </th>
-                <th onClick={() => handleSortData("price_btc")}>
+                <th
+                  onClick={() => handleSortData("price_btc")}
+                  className={`${val === "price_btc" ? "highLightBorder" : ""}`}
+                >
                   Price (BTC)
                   {sort === "none" ? (
                     ""
-                  ) : sort === "asc" ? (
+                  ) : sort === "asc" && val === "price_btc" ? (
                     <MdUpload
                       style={{ marginTop: "2px" }}
                       color="black"
@@ -230,11 +253,16 @@ const Prac = () => {
                     ></MdDownload>
                   )}
                 </th>
-                <th onClick={() => handleSortData("market_cap_usd")}>
+                <th
+                  onClick={() => handleSortData("market_cap_usd")}
+                  className={`${
+                    val === "market_cap_usd" ? "highLightBorder" : ""
+                  }`}
+                >
                   Market Cap (USD)
                   {sort === "none" ? (
                     ""
-                  ) : sort === "asc" ? (
+                  ) : sort === "asc" && val === "market_cap_usd" ? (
                     <MdUpload
                       style={{ marginTop: "2px" }}
                       color="black"
@@ -261,19 +289,55 @@ const Prac = () => {
                       <td>
                         <input type="checkbox" />
                       </td>
-                      <td className="boldd">{item.id}</td>
-                      <td>{item.name}</td>
-                      <td>{item.rank}</td>
-                      <td>{item.price_usd}</td>
                       <td
                         className={`${
-                          item.percent_change_24h > 1 ? "red" : "green"
+                          val === "id" ? "highLightBorder boldd" : ""
+                        }`}
+                      >
+                        {item.id}
+                      </td>
+                      <td
+                        className={`${val === "name" ? "highLightBorder" : ""}`}
+                      >
+                        {item.name}
+                      </td>
+                      <td
+                        className={`${val === "rank" ? "highLightBorder" : ""}`}
+                      >
+                        {item.rank}
+                      </td>
+                      <td
+                        className={`${
+                          val === "price_usd" ? "highLightBorder" : ""
+                        }`}
+                      >
+                        {item.price_usd}
+                      </td>
+                      <td
+                        className={`${
+                          val === "percent_change_24h"
+                            ? "highLightBorder"
+                            : item.percent_change_24h > 1
+                            ? "red"
+                            : "green"
                         }`}
                       >
                         {item.percent_change_24h}
                       </td>
-                      <td>{item.price_btc}</td>
-                      <td>{item.market_cap_usd}</td>
+                      <td
+                        className={`${
+                          val === "price_btc" ? "highLightBorder" : ""
+                        }`}
+                      >
+                        {item.price_btc}
+                      </td>
+                      <td
+                        className={`${
+                          val === "market_cap_usd" ? "highLightBorder" : ""
+                        }`}
+                      >
+                        {item.market_cap_usd}
+                      </td>
                       <td>
                         <BiDotsVerticalRounded></BiDotsVerticalRounded>
                       </td>
