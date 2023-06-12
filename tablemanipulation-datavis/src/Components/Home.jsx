@@ -275,7 +275,8 @@ export const Home = () => {
             </thead>
             <tbody>
               {data?.length === 0 ? (
-                <h1 className="notFound"></h1>
+                // IF NO DATA THEN NO NEED TO RENDER ANYTHING ELSE WILL RENDER "0" LENGTH
+                <></>
               ) : (
                 data?.length &&
                 data?.map((item) => {

@@ -4,12 +4,11 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import {store} from "./Redux/store"
+import { store } from "./Redux/store";
 import { Provider } from "react-redux";
-import 'resize-observer-polyfill/dist/ResizeObserver.global'
+import "resize-observer-polyfill/dist/ResizeObserver.global";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-console.log(store.getState())
 root.render(
   <React.StrictMode>
     <BrowserRouter>
