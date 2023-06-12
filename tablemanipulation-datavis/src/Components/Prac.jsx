@@ -29,17 +29,15 @@ const Prac = () => {
   const [sort, setSort] = useState("none");
   const [val, setVal] = useState("");
   const [filterr, setFilter] = useState("");
-  const [otherFilter, setOtherFilter] = useState(0);
-  // console.log(data,"daa fetch..")
-
+  const [otherFilter, setOtherFilter] = useState("none");
+  console.log(data,"data...")
+  // will run on first render.
   useEffect(() => {
-    
     dispatch(getAllData());
   }, []);
-
   const handleSortData = (val) => {
     //  means now you want something in dsc or asc.
-    console.log(val, "val.....");
+    // notsort===false="asc" and true=desc
     if (!notsort) {
       setVal(val);
       setSort("asc");
@@ -49,20 +47,26 @@ const Prac = () => {
       setSort("desc");
       setnotSort(!notsort);
     }
-    dispatch(sortData({ sort, val }));
+    // dispatch(sortData({ sort, val }));
   };
 
+  // if sort has some value means asc,desc and val means on which basis want to performe
+  // sort this useEffect will run.
   useEffect(() => {
     dispatch(sortData({ sort, val }));
   }, [sort, notsort, val]);
 
+  // if input box is not empty menas has something for search
   useEffect(() => {
     if (filterr !== "") {
       dispatch(filterData(filterr));
     }
   }, [filterr]);
+
+  // if otherFilter or dropdown has selected then this useEffect will run.
   useEffect(() => {
-    if (otherFilter !== 0) {
+    console.log("i am rendering");
+    if (otherFilter !== "none") {
       dispatch(filterDataOther(otherFilter));
     }
   }, [otherFilter]);
@@ -102,8 +106,8 @@ const Prac = () => {
                 <div className="textDeleteDiv">
                   <select onChange={(e) => setOtherFilter(e.target.value)}>
                     <option>Filter</option>
-                    <option value="">All</option>
-                    <option value="all">top5rank</option>
+                    <option value="all">All</option>
+                    <option value="5">top5rank</option>
                   </select>
                 </div>
               </div>
@@ -344,6 +348,7 @@ const Prac = () => {
           </table>
         </div>
         <div className="paginatedComponet">
+          {/* sort has no pagination together means if sort has asc or dsc do not apply paginated component */}
           {sort === "none" ? <PaginatedComponent></PaginatedComponent> : ""}
         </div>
         <Link className="anc" to="/datavisual">

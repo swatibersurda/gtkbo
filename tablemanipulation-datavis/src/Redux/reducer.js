@@ -6,8 +6,10 @@ const intialState = {
   totalbutt: 0,
   isLoading: false,
   isError: false,
-  filtering:false,
-  filterDataCopy:[]
+  // so that filter records can persist.
+  filtering: false,
+  filterDataCopy: [],
+  otherFiltering: false,
 };
 export const reducer = (state = intialState, action) => {
   switch (action.type) {
@@ -18,8 +20,8 @@ export const reducer = (state = intialState, action) => {
       };
     }
     case Types.GET_ALL_DATA_SUCESS: {
-      console.log(action.payload,"acion at sucess")
       const pageCount = action.payload.data.length;
+      // for making buttons for pagination as we are taking 10 records in each page.
       const tPage = Math.floor(pageCount / 10);
       return {
         ...state,
@@ -29,18 +31,15 @@ export const reducer = (state = intialState, action) => {
         totalbutt: tPage,
       };
     }
-
     case Types.GET_ALL_DATA_FAILURE: {
       return {
         ...state,
         isError: true,
       };
     }
-
     case Types.SORT_DATA: {
       const pageCount = state.sortData.length;
       const tPage = Math.floor(pageCount / 10);
-      // console.log(action.payload, "i am at sortreducer..");
       const { sort, val } = action.payload;
       let sorted;
       //   this sort for string.
@@ -66,12 +65,10 @@ export const reducer = (state = intialState, action) => {
       }
       //   this sort for numbers
       if (sort === "asc") {
-        // console.log(sort, "sss");
         sorted = state.sortData.sort((a, b) => a[val] - b[val]);
       } else if (sort === "desc") {
         sorted = state.sortData.sort((a, b) => b[val] - a[val]);
       }
-      // console.log(sorted, "sortedd..",state.sortData.length);
       return {
         ...state,
         data: sorted,
@@ -86,9 +83,7 @@ export const reducer = (state = intialState, action) => {
           item.name.toLowerCase().includes(action.payload) ||
           item.id.toLowerCase().includes(action.payload)
       );
-      // console.log(filterData, "filterdd..");
       const pageCount = filterData.length;
-      // console.log(pageCount, "pc");
       let tPage;
       // this case will handle it you have only 5 or 6 records to display on that time need only
       // one button for that will use this for filter+pagination work together.
@@ -97,28 +92,29 @@ export const reducer = (state = intialState, action) => {
       } else {
         tPage = Math.floor(pageCount / 10) + 1;
       }
-      console.log("filterddata",filterData)
       return {
         ...state,
         data: filterData,
         totalbutt: tPage,
-        filtering:true,
-        filterDataCopy:filterData
-
+        filtering: true,
+        filterDataCopy: filterData,
       };
     }
+    // For Filtering from drop-down
     case Types.FILTER_DATA_OTHER: {
-      console.log(action.payload,"filterde data other..",typeof(action.payload))
-      // let x;
-      // x=+(action.payload); 
-      // console.log(typeof(x),"cvvcv")
-      const filterData = state.sortData.filter(
-        (item) =>item.rank<=5
-      
-      );
-      console.log(filterData, "filterdd..");
+      let x;
+      // if action.payload==="5" need to change into number and 1 to 5 records return
+      if (typeof action.payload === "string" && action.payload === "5") {
+        x = +action.payload;
+      }
+      const filterData = state.sortData.filter((item) => {
+        if (action.payload === "all") {
+          return state.sortData;
+        } else {
+          return item.rank <= x;
+        }
+      });
       const pageCount = filterData.length;
-      // console.log(pageCount, "pc");
       let tPage;
       // this case will handle it you have only 5 or 6 records to display on that time need only
       // one button for that will use this for filter+pagination work together.
@@ -130,40 +126,32 @@ export const reducer = (state = intialState, action) => {
       return {
         ...state,
         data: filterData,
+        filterDataCopy: filterData,
         totalbutt: tPage,
+        otherFiltering: true,
       };
     }
-
-
-  
-  // will work for normally or non filter data..
+    // will work for normally or non filter data..
     case Types.PAGINATED_DATA: {
-      console.log(action.payload, "kkk i am reching shivaaa...");
+      // making range of records from 0-9--->10 records each
       const npage = (action.payload - 1) * 10;
-      let endPage = npage + 10 - 1;
+      let endPage = npage + 10 ;
       let paginatedArr = state.sortData.slice(npage, endPage);
-      // this case will handle it you have only 5 or 6 records to display on that time need only
-      // one button for that will use this for filter+pagination work together.
-      console.log(paginatedArr,"ppppppqqq")
       return {
         ...state,
         data: [...paginatedArr],
-        
       };
     }
-   case Types.FILTER_AND_PAGINATION:{
-    console.log(action.payload,"fiipageiii..",state.data)
-    const npage = (action.payload - 1) * 10;
-      let endPage = npage + 10 - 1;
+    case Types.FILTER_AND_PAGINATION: {
+      const npage = (action.payload - 1) * 10;
+      let endPage = npage + 10 ;
       // here actually filterDatacopy will persist the filtered data as data is keep
       let paginatedArr = state.filterDataCopy.slice(npage, endPage);
-      console.log(paginatedArr,"mmmmmohittt...")
-      return{
+      return {
         ...state,
-        data: [...paginatedArr]
-      }
-   }
-
+        data: [...paginatedArr],
+      };
+    }
     default:
       return state;
   }
